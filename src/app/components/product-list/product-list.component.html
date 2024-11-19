@@ -1,34 +1,22 @@
-<p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template pTemplate="header">
-    <tr class="border-b-2 border-gray-200 px-6 py-4 text-center font-semibold">
-      <th class="bg-[#212529] text-white"></th>
-      <th class="bg-[#212529] text-white">Name</th>
-      <th class="bg-[#212529] pl-6 text-white">Price</th>
-      <th class="bg-[#212529] text-left text-white">Units in Stock</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-product>
-    <tr>
-      <td class="border-b border-gray-200 px-6 py-4">
-        <img
-          src="{{ product.imageUrl }}"
-          alt="product image"
-          class="h-20 align-middle"
-        />
-      </td>
-      <td class="border-b border-gray-200 px-6 py-4 align-middle">
-        {{ product.name }}
-      </td>
-      <td class="border-b border-gray-200 px-6 py-4 align-middle">
-        {{ product.unitPrice | currency: "USD" }}
-      </td>
-      <td class="border-b border-gray-200 px-6 py-4 align-middle">
-        {{ product.unitsInStock }}
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-
-<!--@for (product of products; track $index) {-->
-<!--  <p>{{ product.name }}: {{ product.unitPrice | currency: "USD" }}</p>-->
-<!--}-->
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+        @for (product of products; track $index) {
+          <div class="col-md-3">
+            <div class="product-box">
+              <img
+                src="{{ product.imageUrl }}"
+                class="img-responsive"
+                alt="product image"
+              />
+              <h1>{{ product.name }}</h1>
+              <div class="price">{{ product.unitPrice | currency: "USD" }}</div>
+              <a href="#" class="primary-btn">Add to cart</a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
