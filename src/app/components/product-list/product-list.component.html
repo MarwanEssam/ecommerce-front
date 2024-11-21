@@ -5,15 +5,23 @@
         @for (product of products; track $index) {
           <div class="col-md-3">
             <div class="product-box">
-              <img
-                src="{{ product.imageUrl }}"
-                class="img-responsive"
-                alt="product image"
-              />
+              <a routerLink="/products/{{ product.id }}">
+                <img
+                  src="{{ product.imageUrl }}"
+                  class="img-responsive"
+                  alt="product image"
+                />
+              </a>
+              <a routerLink="/products/{{ product.id }}"></a>
               <h1>{{ product.name }}</h1>
               <div class="price">{{ product.unitPrice | currency: "USD" }}</div>
               <a href="#" class="primary-btn">Add to cart</a>
             </div>
+          </div>
+        }
+        @if (products.length == 0) {
+          <div class="alert alert-warning col-md-12" role="alert">
+            No products found.
           </div>
         }
       </div>
