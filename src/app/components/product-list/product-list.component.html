@@ -15,7 +15,12 @@
               <a routerLink="/products/{{ product.id }}"></a>
               <h1>{{ product.name }}</h1>
               <div class="price">{{ product.unitPrice | currency: "USD" }}</div>
-              <a href="#" class="primary-btn">Add to cart</a>
+              <button
+                class="btn btn-primary btn-sm"
+                (click)="addToCart(product)"
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         }
@@ -24,6 +29,40 @@
             No products found.
           </div>
         }
+      </div>
+      <div class="footer-pagination">
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-9" style="padding-left: 30%">
+                <ngb-pagination
+                  [(page)]="thePageNumber"
+                  [pageSize]="thePageSize"
+                  (pageChange)="listProducts()"
+                  [maxSize]="5"
+                  [boundaryLinks]="true"
+                  [collectionSize]="theTotalElements"
+                >
+                </ngb-pagination>
+              </div>
+              <div class="col-md-3 mt-2" style="text-align: right">
+                <span style="margin-right: 0.5rem">Page Size</span>
+                <select
+                  #myPageSelect
+                  (change)="updatePageSize(myPageSelect.value)"
+                  class="rounded-2"
+                >
+                  <option>2</option>
+                  <option selected="selected">5</option>
+                  <option>10</option>
+                  <option>20</option>
+                  <option>50</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
